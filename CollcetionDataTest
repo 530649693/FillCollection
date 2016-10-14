@@ -1,0 +1,23 @@
+import java.util.LinkedHashSet;
+//示例 初始化LinkedHashSet
+import java.util.Set;
+//数据生成器
+class Government implements Generator<String> {
+	String [] foundaction = ("strange women lying in punds " + "distributing swords id bo basis for a system of "+
+			"government").split(" ");
+	private int index;
+	public String next() {
+		return foundaction[index++];
+	}
+}
+
+public class CollcetionDataTest {
+	public static void main(String[] args) {
+    //使用自己的接收器 填充容器
+		Set<String> set = new LinkedHashSet<String>(
+				new CollectionData<String>(new Government(), 11));
+		//使用一般遍历方法 接收对象
+//		set.addAll(CollectionData.list(new Government(), 11));
+		System.out.println(set);
+	}
+}
