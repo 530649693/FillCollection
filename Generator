@@ -1,0 +1,4 @@
+//生成器接口
+public interface Generator<T> {
+	T next();
+}
