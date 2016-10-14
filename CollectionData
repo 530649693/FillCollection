@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+//可以填充大部分容器
+//适配器设计模式  将生成器 Generator 适配到 Collection的构造器上
+//所有的集合都有接收另一个集合对象的构造器 下面是构建接收器类 生成器 和 数值总量作为参数 
+public class CollectionData<T> extends ArrayList<T> {
+  //自己构建的接收器
+	public CollectionData(Generator<T> gen , int quantity) {
+		for (int i = 0; i < quantity; i++) {
+			add(gen.next());
+		}
+	}
+	//一般的遍历方法
+	public static <T> CollectionData<T> list(Generator<T> gen, int quantity){
+		return new CollectionData<T>(gen, quantity);
+	}
+}
